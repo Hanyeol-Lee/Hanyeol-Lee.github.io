@@ -1,0 +1,4 @@
+{% assign entrytype = entrytype | replace_first: '<em>In ', '<em>' %}
+{% if entry.display_year %}
+  {% capture entryyear %}{{ " " }}{{ entry.display_year }}{% endcapture %}
+{% endif %}
