@@ -1,6 +1,6 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
 subtitle: >-
   Robotics researcher | Ph.D. Candidate
@@ -30,7 +30,7 @@ latest_posts:
 
 I am a Ph.D. candidate in the Department of Aerospace Engineering at Seoul National University (SNU).
 
-My research vision is to enable robotic systems to perceive and understand the world at a semantic level by leveraging diverse sensing modalities, including LiDAR, monocular and stereo vision, event cameras, radar, and IMUs. Toward this goal, I integrate object-level perception with reliable state estimation to develop smarter perception systems for intelligent robots, autonomous vehicles, and aerial robotics.
+My research vision is to enable robotic systems to perceive and understand the world at a semantic level by leveraging diverse sensing modalities, including LiDAR, monocular and stereo vision, event cameras, radar, and IMUs. Toward this goal, I integrate object-level perception with reliable state estimation to develop smarter perception systems for intelligent robots, autonomous vehicles, and aerial platforms.
 
 </div>
 
