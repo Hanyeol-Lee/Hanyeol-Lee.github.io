@@ -17,13 +17,16 @@
       {% endif %}
       {% if include.width %}
         width="{{ include.width }}"
-      {% else %}
+      {% elsif publication_preview == false %}
         width="auto"
       {% endif %}
       {% if include.height %}
         height="{{ include.height }}"
-      {% else %}
+      {% elsif publication_preview == false %}
         height="auto"
+      {% endif %}
+      {% if publication_preview %}
+        style="display: block; width: 100%; max-width: 100%; height: auto;"
       {% endif %}
       {% if include['min-width'] %}
         min-width="{{ include.min-width }}"
