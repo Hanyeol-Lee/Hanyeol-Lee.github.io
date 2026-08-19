@@ -64,6 +64,7 @@ My research vision is to enable robotic systems to perceive and understand the w
   .about-intro {
     font-size: 1.05rem;
     line-height: 1.65;
+    letter-spacing: -0.01em;
   }
 
   article > .clearfix + h2 {
