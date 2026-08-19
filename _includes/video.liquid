@@ -1,0 +1,144 @@
+{%- comment -%}
+  Local override of al-folio's video include. Publication preview videos play
+  automatically without controls; other embedded videos retain normal behavior.
+{%- endcomment -%}
+{% assign extension = include.path | split: '.' | last | split: '?' | first | downcase %}
+{% assign publication_preview = false %}
+{% if include.class contains 'preview' %}
+  {% assign publication_preview = true %}
+{% endif %}
+
+<figure>
+  {% if extension == 'mp4' or extension == 'webm' or extension == 'ogg' or extension == 'mov' %}
+    <video
+      src="{% if include.cache_bust %}{{ include.path | relative_url | bust_file_cache }}{% else %}{{ include.path | relative_url }}{% endif %}"
+      {% if include.class %}
+        class="{{ include.class }}"
+      {% endif %}
+      {% if include.width %}
+        width="{{ include.width }}"
+      {% else %}
+        width="auto"
+      {% endif %}
+      {% if include.height %}
+        height="{{ include.height }}"
+      {% else %}
+        height="auto"
+      {% endif %}
+      {% if include['min-width'] %}
+        min-width="{{ include.min-width }}"
+      {% endif %}
+      {% if include['min-height'] %}
+        min-height="{{ include.min-height }}"
+      {% endif %}
+      {% if include['max-width'] %}
+        max-width="{{ include.max-width }}"
+      {% endif %}
+      {% if include['max-height'] %}
+        height="{{ include.max-height }}"
+      {% endif %}
+      {% if include.title %}
+        title="{{ include.title }}"
+      {% endif %}
+      {% if include.alt %}
+        alt="{{ include.alt }}"
+      {% endif %}
+      {% if include.autoplay or publication_preview %}
+        autoplay
+      {% endif %}
+      {% if include.controls and publication_preview == false %}
+        controls
+      {% endif %}
+      {% if include.loop or publication_preview %}
+        loop
+      {% endif %}
+      {% if include.muted or publication_preview %}
+        muted
+      {% endif %}
+      {% if publication_preview %}
+        preload="auto"
+        playsinline
+      {% endif %}
+      {% if include.poster %}
+        poster="{{ include.poster }}"
+      {% endif %}
+    />
+
+    {% if publication_preview %}
+      <script>
+        (() => {
+          const script = document.currentScript;
+          const video = script.previousElementSibling;
+
+          if (!video) return;
+
+          video.muted = true;
+          video.defaultMuted = true;
+          video.autoplay = true;
+          video.loop = true;
+          video.playsInline = true;
+
+          const play = () => video.play().catch(() => {});
+
+          if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver(
+              ([entry]) => {
+                if (entry.isIntersecting) {
+                  play();
+                } else {
+                  video.pause();
+                }
+              },
+              { threshold: 0.15 }
+            );
+            observer.observe(video);
+          } else {
+            video.addEventListener('canplay', play, { once: true });
+          }
+        })();
+      </script>
+    {% endif %}
+
+  {% else %}
+    <iframe
+      src="{{ include.path }}"
+      {% if include.class %}
+        class="{{ include.class }}"
+      {% endif %}
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+      {% if include.width %}
+        width="{{ include.width }}"
+      {% else %}
+        width="auto"
+      {% endif %}
+      {% if include.height %}
+        height="{{ include.height }}"
+      {% else %}
+        height="auto"
+      {% endif %}
+      {% if include['min-width'] %}
+        min-width="{{ include.min-width }}"
+      {% endif %}
+      {% if include['min-height'] %}
+        min-height="{{ include.min-height }}"
+      {% endif %}
+      {% if include['max-width'] %}
+        max-width="{{ include.max-width }}"
+      {% endif %}
+      {% if include['max-height'] %}
+        height="{{ include.max-height }}"
+      {% endif %}
+      {% if include.alt %}
+        alt="{{ include.alt }}"
+      {% endif %}
+      {% if include.title %}
+        title="{{ include.title }}"
+      {% endif %}
+    />
+  {% endif %}
+  {% if include.caption %}
+    <figcaption class="caption">{{ include.caption }}</figcaption>
+  {% endif %}
+</figure>

@@ -77,4 +77,23 @@ My research vision is to enable robotic systems to perceive and understand the w
   .publications ol.bibliography li {
     margin-bottom: 2rem;
   }
+
+  .publications img.preview[src*="T-ase.png"] {
+    display: block !important;
+    width: 90% !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+
+  @media (min-width: 576px) {
+    .publications ol.bibliography li .row > .abbr:has(.preview) {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+
+    .publications ol.bibliography li .row > .abbr:has(.preview) + [id] {
+      flex: 0 0 58.333333%;
+      max-width: 58.333333%;
+    }
+  }
 </style>
