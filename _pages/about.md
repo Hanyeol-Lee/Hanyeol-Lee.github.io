@@ -8,8 +8,6 @@ subtitle: >-
     <a href="/assets/pdf/hanyeol_lee_cv.pdf" target="_blank" rel="noopener noreferrer">CV</a>
     <span aria-hidden="true">·</span>
     <a href="https://scholar.google.com/citations?user=SyxOVcQAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-    <span aria-hidden="true">·</span>
-    <a href="https://github.com/Hanyeol-Lee" target="_blank" rel="noopener noreferrer">GitHub</a>
   </span>
 
 profile:
